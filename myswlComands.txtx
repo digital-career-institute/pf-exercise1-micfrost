@@ -1,0 +1,22 @@
+CREATE TABLE Departments (
+DepartmentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+DepartmentName VARCHAR(50) NOT NULL, 
+location VARCHAR(50));
+
+CREATE TABLE Employees (
+EmployeeID  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+EmployeeName VARCHAR(50) NOT NULL,
+DepartmentID INT NOT NULL, 
+CONSTRAINT fk_Department FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID));
+
+DESCRIBE Departments;  
+DESCRIBE Employees;
+
+INSERT INTO Departments (DepartmentName, location) VALUES ('IT', 'London');
+
+INSERT INTO Employees (EmployeeNAME, DepartmentID) VALUES ('David Wilson', 1);
+
+SELECT * FROM Departments;
+SELECT * FROM Employees;
+
+SELECT * FROM Employees LEFT JOIN Departments ON Departments.DepartmentID = Employees.DepartmentID;
